@@ -1,4 +1,8 @@
+'use client'
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import style from './SidebarMenuItem.module.css';
 
 export interface MenuItemProps {
   path: string;
@@ -8,10 +12,11 @@ export interface MenuItemProps {
 }
 
 export const SidebarMenuItem = ({path, icon, title, subtitle}: MenuItemProps) => {
+  const pathName = usePathname();
   return (
     <Link 
       href={path} 
-      className="w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 bg-blue-800 hover:bg-white/5 transition ease-linear duration-150"
+      className={ `${ style.link } ${ (pathName === path) && style['active-link']}` }
     >
       <div>
         {icon}
