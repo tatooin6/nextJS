@@ -10,6 +10,9 @@ const getPokemons = async (limit = 20, offset = 0):Promise<SimplePokemon[]> => {
     name: pokemon.name,
   }));
 
+  // TEST: only for error.js test file1
+  // throw new Error('this shouldnt be happening');
+
   return pokemons;
 }
 
