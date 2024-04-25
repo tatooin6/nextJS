@@ -1,5 +1,5 @@
 
-import { CartCounter } from '@/app/shopping-cart';
+import { CartCounter } from '@/shopping-cart';
 import style from './counter.page.module.css'
 
 export const metadata = {
