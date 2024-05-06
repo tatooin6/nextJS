@@ -14,15 +14,15 @@ interface CartCounterProps {
 }
 
 export const CartCounter = ({ value = 0 }: CartCounterProps) => {
-  const [counter, useCounter] = useState(value);
+  const [count, setCount] = useState(value);
   const handleOperationBy = (operation: Operation) => {
     switch (operation) {
       case Operation.Add:
-        useCounter(counter+1);
+        setCount(count+1);
         break;
 
       case Operation.Substract:
-        useCounter(counter-1);
+        setCount(count-1);
         break;
 
       default:
@@ -32,7 +32,7 @@ export const CartCounter = ({ value = 0 }: CartCounterProps) => {
   }
   return (
     <>
-      <span className={ style.counter }>{ counter }</span>
+      <span className={ style.counter }>{ count }</span>
 
       <div className='flex'>
         <button 
