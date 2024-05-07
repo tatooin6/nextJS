@@ -7,6 +7,25 @@ interface PageProps {
   params: { id: string; };
 }
 
+// Generated only on build time
+export async function generateStaticParams() {
+
+  return Array
+  .from({ length: 151})
+  .map( (v, i) => ({
+    id: `${i + 1}` 
+  }));
+
+  // return [
+  //   { id: '1'},
+  //   { id: '2'},
+  //   { id: '3'},
+  //   { id: '4'},
+  //   { id: '5'},
+  //   { id: '6'},
+  // ]
+}
+
 // This function is not going to be called again
 // only if a brand new page is created
 export async function generateMetadata({ params }: PageProps):Promise<Metadata> {
@@ -35,7 +54,7 @@ const getPokemon = async (id:string): Promise<Pokemon> => {
       // }
     ).then( res => res.json());
 
-    console.log('Se cargo a ', pokemon.name)
+    // console.log('Se cargo a ', pokemon.name)
 
     return pokemon;
   } catch (err) {
