@@ -1,10 +1,12 @@
+'use client'
+
+import { useAppSelector } from "@/app/hooks";
 import { IoCafeOutline } from "react-icons/io5"
 
-interface SimpleWidgetProps {
-  title: string;
-}
+export const SimpleWidget = () => {
+  // const { whatIsOnTheInitialState } = useSelector( theBigState => theBigState.counterReducer ); 
+  const { count } = useAppSelector( (store) => store.counterReducer );
 
-export const SimpleWidget = ({ title }: SimpleWidgetProps) => {
   return (
     <div className="bg-white shadow-xl p-3 sm:min-w-[25%] min-w-full  rounded-2xl border-1 border-gray-50 mx-2 my-2">
       <div className="flex flex-col">
@@ -17,7 +19,7 @@ export const SimpleWidget = ({ title }: SimpleWidgetProps) => {
               { <IoCafeOutline size={50} className="text-blue-500"/> }
             </div>
             <div id="temp" className="text-center">
-              <h4 className="text-4xl">{ title }</h4>
+              <h4 className="text-4xl">{ count }</h4>
               <p className="text-xs text-gray-500">Subtitulo</p>
             </div>
           </div>
