@@ -3,13 +3,8 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import style from './cartCounter.module.css';
 
-import { useState } from 'react';
-import { addOne, substractOne } from '@/store/counter/counterSlice';
-
-enum Operation {
-  Add,
-  Substract
-}
+import { addOne, initCounterState, resetCount, substractOne } from '@/store/counter/counterSlice';
+import { useEffect } from 'react';
 
 interface CartCounterProps {
   value: number;
@@ -18,22 +13,11 @@ interface CartCounterProps {
 export const CartCounter = ({ value = 0 }: CartCounterProps) => {
   const { count } = useAppSelector( state => state.counterReducer);
   const dispatch = useAppDispatch();
-// const [count, setCount] = useState(value);
-//   const handleOperationBy = (operation: Operation) => {
-//     switch (operation) {
-//       case Operation.Add:
-//         setCount(count+1);
-//         break;
-// 
-//       case Operation.Substract:
-//         setCount(count-1);
-//         break;
-// 
-//       default:
-//         break;
-//     }
-// 
-//   }
+
+  useEffect(() => {
+    dispatch( initCounterState(value) );
+  }, [dispatch, value])
+
   return (
     <>
       <span className={ style.counter }>{ count }</span>
